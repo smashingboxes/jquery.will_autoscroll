@@ -14,14 +14,13 @@
     
     var pluginName = 'will_autoscroll',
     defaults = {
+        callback    : function() { return false; }
         delay       : 250,
-        load_state  : "loading",
-        pagination  : ".pagination",
+        end_html    : "<div class='will_autoscroll_end'>No more information could be loaded</div>",
         leniency    : 125,
         latency     : 1000,
+        pagination  : ".pagination",
         repeat_item : "li",
-        end_html    : "<div class='will_autoscroll_end'>No more information could be loaded</div>",
-        callback    : function() { return false; }
     };
 
     function Plugin( element, options ) {
