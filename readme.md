@@ -20,7 +20,6 @@ a list of thumbnails.
 // Current defaults
 $("#container").will_autoscroll({
     delay       : 250,
-    load_state  : "loading",
     pagination  : ".pagination",
     leniency    : 125,
     latency     : 1000,
@@ -31,10 +30,9 @@ $("#container").will_autoscroll({
 ```
 ---
 1. **delay:** `will_autoscroll` fades elements on to the page upon receiving content. This sets the interval at which elements will fade on to the page
-2. **load_state:** The class added to the container element when new content is loading
-3. **pagination:** The pagination container, defaults to `.pagination`
-4. **leniency:** The pixel height dictacting the required space from the bottom of the page before autoscroll occurs
-5. **latency:** The delay after new content is loaded in which scroll triggers will not occur
-6. **repeat_item:** The item in the container list which is being repeated, this is to filter loaded content
-7. **end_html:** What is displayed at the bottom of the container after the final page has been loaded
-8. **callback:** The function which is fired after each successful pagination load
+2. **pagination:** The pagination container, defaults to `.pagination`
+3. **leniency:** The pixel height dictacting the required space from the bottom of the page before autoscroll occurs
+4. **latency:** The delay after new content is loaded in which scroll triggers will not occur
+5. **repeat_item:** The item in the container list which is being repeated, this is to filter loaded content
+6. **end_html:** What is displayed at the bottom of the container after the final page has been loaded
+7. **callback:** The function which is fired after each successful pagination load
