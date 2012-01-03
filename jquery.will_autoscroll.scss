@@ -1,0 +1,23 @@
+// -------------------------------------------------- //
+// Name    : will_autoscroll scss
+// Author  : Nate Hunzaker
+// License : MIT
+// -------------------------------------------------- //
+
+.will_autoscroll_end {
+    border-top: 4px double #D9D9D9;
+    text-align: center;
+    padding: 1.7em 0 0;
+    font: normal 1.15em/1em sans-serif;
+    text-shadow: 0 1px 0 white;
+}
+
+.will_autoscroll_loader {
+    border: 0;
+    height: 50px;
+    text-align: center;
+    padding: 1.7em 0 2.5em;
+    font: normal 1.15em/1em sans-serif;
+    text-shadow: 0 1px 0 white;
+    background: url("/images/will_autoscroll/loader.gif") 50% 100% no-repeat;
+}
