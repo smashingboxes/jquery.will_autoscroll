@@ -23,6 +23,7 @@ $("#container").will_autoscroll({
     pagination  : ".pagination",
     leniency    : 125,
     latency     : 1000,
+    list_group  : "ul.will_autoscroll",
     repeat_item : "li",
     end_html    : "<div class='will_autoscroll_end'>No more information could be loaded</div>",
     callback    : function() { return false; }
@@ -36,3 +37,4 @@ $("#container").will_autoscroll({
 5. **repeat_item:** The item in the container list which is being repeated, this is to filter loaded content
 6. **end_html:** What is displayed at the bottom of the container after the final page has been loaded
 7. **callback:** The function which is fired after each successful pagination load
+8. **list_group:** The list which is targeted for autoscroll
