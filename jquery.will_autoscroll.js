@@ -65,7 +65,9 @@
             // Basic flow control, basically we don't want the
             // autoscroll even to fire too quickly
             function ret(delay) {
-                setTimeout(function() { $(window).one("scroll", autoscroll); }, delay || fn.options.latency);
+                setTimeout(function() { 
+                    $(window).one("scroll", autoscroll); 
+                }, delay || fn.options.latency);
             }
             
             if ( height - scroll < leniency ) { return ret(); }
@@ -94,7 +96,7 @@
                     
                     $(".will_autoscroll_loader").remove();
                     
-                    $el.css({ overflow: "hidden", height: $($el).height() }).animate({ height: height}, delay / 2);
+                    $el.css({ height: $($el).height() }).animate({ height: height}, delay / 2);
 
                     $items.each(function(i) {
                         $(this).hide().appendTo($el).delay(i * fn.options.delay).fadeIn();
