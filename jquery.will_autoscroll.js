@@ -6,7 +6,7 @@
 //              specifically designed for
 //              will_paginate
 //
-// Version: 0.0.1
+// Version: 0.5.1
 // Author: Nate Hunzaker
 // ------------------------------------- //
 
