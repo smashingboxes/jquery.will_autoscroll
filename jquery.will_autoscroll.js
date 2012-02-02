@@ -16,10 +16,12 @@
     defaults = {
         callback    : function() { return false; },
         delay       : 250,
-        end_html    : "<div class='will_autoscroll_end'>No more information could be loaded</div>",
+        end_html    : "<div class='will_autoscroll_end'>End of list</div>",
         leniency    : 125,
         latency     : 1000,
         pagination  : ".pagination",
+        
+        list_group  : "ul.will_autoscroll",
         repeat_item : "li"
     };
 
@@ -38,9 +40,10 @@
         var fn          = this
         ,   $el         = $(this.element)
         ,   $pagination = $(this.options.pagination).first()
-        ,   repeat_item   = fn.options.repeat_item
+        ,   repeat_item  = fn.options.repeat_item
         ,   leniency    = this.options.leniency
         ,   callback    = this.options.callback
+        ,   list_group  = this.options.list_group
         ;
         
         // Prevent autoscroll on pages without a pagination element
@@ -57,8 +60,7 @@
 
             var scroll     = $(window).scrollTop()
             ,   height     = $(document).height()
-            ,   $next      = $pagination.find(".current").next("a")
-            ;
+            ,   $next      = $pagination.find("[rel=next]").first();
             
             // Basic flow control, basically we don't want the
             // autoscroll even to fire too quickly
@@ -75,9 +77,6 @@
                 return $el.after(fn.options.end_html);
             }
 
-            $pagination.find(".current").removeClass("current");
-            $next.addClass("current");
-
             return $.ajax({
 
                 url        : $next.attr("href"),
@@ -88,10 +87,10 @@
                 
                 success: function(data) {
 
-                    var $items = $(data).find(".items.group " + repeat_item)
-                    ,   delay = ($items.length / 2) * fn.options.delay
-                    ,   height = $el.height() + ( Math.round($items.length / 3) * 314)
-                    ;
+                    var newList   = $(data).find(".pagination").children(),
+                        $items    = $(data).find(list_group + " " + repeat_item),  
+                        delay     = ($items.length / 2) * fn.options.delay,   
+                        height    = $el.height() + ( Math.round($items.length / 3) * 314);
                     
                     $(".will_autoscroll_loader").remove();
                     
@@ -100,7 +99,11 @@
                     $items.each(function(i) {
                         $(this).hide().appendTo($el).delay(i * fn.options.delay).fadeIn();
                     });
-                    
+
+                    // Now, we need to update the list, otherwise things like gaps in the pagination
+                    // will break it.
+                    $pagination.html(newList);
+
                     callback();
                     ret(delay);
                 }
